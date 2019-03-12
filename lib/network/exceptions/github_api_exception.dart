@@ -6,4 +6,9 @@ class GithubApiException implements Exception {
       {@required int actualStatusCode, int expectedStatusCode = 200})
       : message =
             "Github API returned $actualStatusCode instead of $expectedStatusCode.";
+
+  @override
+  String toString() {
+    return 'GithubApiException{message: $message}';
+  }
 }
