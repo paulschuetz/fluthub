@@ -7,4 +7,9 @@ Future main() async {
   var repos = await githubApi.fetchRepositories();
   repos.forEach((repo) => print(repo.toString()));
   print("finished fetching all ${repos.length} repos.");
+
+  print("fetching user 'paulschuetz'");
+  var user = await githubApi.fetchUser();
+  print(user.toString());
+  print("fetched user");
 }
