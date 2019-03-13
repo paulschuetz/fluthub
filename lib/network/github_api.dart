@@ -8,9 +8,8 @@ import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 
 class GithubApi {
-  final String _apiKey = "Your-Api-Key-Here";
+  final String _apiKey = "9f44d17536f3e079241b41c9f3b12ccb6ef9b9c6";
   final Client _client;
-
   GithubApi({@required Client client})
       : assert(client != null),
         _client = client;
