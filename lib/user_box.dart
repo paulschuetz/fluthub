@@ -20,34 +20,43 @@ class _UserBoxState extends State<UserBox> {
     return Container(
         height: 120,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        decoration: BoxDecoration(
-            border: Border.all(
-                color: Color(0xff24292e), width: 4, style: BorderStyle.solid),
-            borderRadius: BorderRadius.circular(10)),
         child: FutureBuilder<User>(
           future: _githubApi.fetchUser(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               var user = snapshot.data;
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.network(user.avatarUrl, fit: BoxFit.fitHeight),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(user.name, style: TextStyle(fontWeight: FontWeight.w700),),
-                      Text(user.login),
-                      Text(user.email),
-                      Text("Joined at " + DateTime.parse(user.createdAt).toLocal().toString())
-                    ],
-                  )
-
-                ],
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child:
+                          Image.network(user.avatarUrl, fit: BoxFit.fitHeight),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          user.name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              letterSpacing: 0.5),
+                        ),
+                        Text(
+                          user.login,
+                          style: TextStyle(fontSize: 16, letterSpacing: 0.5),
+                        ),
+                        Text(user.email),
+                        Text("Joined at " +
+                            DateTime.parse(user.createdAt).toLocal().toString())
+                      ],
+                    )
+                  ],
+                ),
               );
             } else {
               return Center(

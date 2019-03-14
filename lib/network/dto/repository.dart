@@ -129,8 +129,16 @@ abstract class Repository implements Built<Repository, RepositoryBuilder> {
   int get watchers;
   @BuiltValueField(wireName: 'default_branch')
   String get defaultBranch;
+  @nullable
   @BuiltValueField(wireName: 'permissions')
   Permissions get permissions;
+  @nullable
+  @BuiltValueField(wireName: 'source')
+  Repository get source;
+  @nullable
+  @BuiltValueField(wireName: 'parent')
+  Repository get parent;
+
   String toJson() {
     return json.encode(serializers.serializeWith(Repository.serializer, this));
   }

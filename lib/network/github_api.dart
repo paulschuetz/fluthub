@@ -8,8 +8,9 @@ import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 
 class GithubApi {
-  final String _apiKey = "9f44d17536f3e079241b41c9f3b12ccb6ef9b9c6";
+  final String _apiKey = "Enter-Api-Key-Here";
   final Client _client;
+
   GithubApi({@required Client client})
       : assert(client != null),
         _client = client;
@@ -54,5 +55,24 @@ class GithubApi {
           actualStatusCode: response.statusCode, expectedStatusCode: 200);
 
     return User.fromJson(response.body);
+  }
+
+  Future<Repository> loadSourceRepo(Repository childRepo) async {
+    Uri uri = new Uri(
+      host: "api.github.com",
+      scheme: "https",
+      path: "/repos/paulschuetz/${childRepo.name}",
+    );
+
+    var response = await _client.get(uri, headers: {
+      "Accept": "application/vnd.github.v3+json",
+      "Authorization": "Bearer $_apiKey"
+    });
+
+    if (response.statusCode != 200)
+      throw new GithubApiException(
+          actualStatusCode: response.statusCode, expectedStatusCode: 200);
+
+    return Repository.fromJson(response.body);
   }
 }
