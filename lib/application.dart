@@ -1,4 +1,5 @@
-import 'package:fluthub/network/dto/repository.dart';
+import 'dart:io';
+
 import 'package:fluthub/network/github_api.dart';
 import 'package:http/http.dart';
 
@@ -17,4 +18,6 @@ Future main() async {
   var user = await githubApi.fetchUser();
   print(user.toString());
   print("fetched user");
+
+  exit(0);
 }

@@ -8,7 +8,7 @@ import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 
 class GithubApi {
-  final String _apiKey = "Enter-Api-Key-Here";
+  final String _apiKey = "c2735a31ae9a3e1ca8922c013e2fe4f9d9080d3c";
   final Client _client;
 
   GithubApi({@required Client client})
@@ -21,7 +21,7 @@ class GithubApi {
       host: "api.github.com",
       scheme: "https",
       path: "/user/repos",
-      queryParameters: {"page": "$page", "per_page": "$resultsPerPage"},
+      queryParameters: {"page": "$page", "per_page": "$resultsPerPage", "sort": "created"},
     );
 
     var response = await _client.get(uri, headers: {

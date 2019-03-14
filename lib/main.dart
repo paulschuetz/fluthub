@@ -1,4 +1,4 @@
-import 'package:fluthub/home.dart';
+import 'package:fluthub/home_page.dart';
 import 'package:fluthub/network/github_api.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       home:
         Scaffold(
           appBar: AppBar(title: Center(child: new Text("Fluthub")), backgroundColor: Color(0xff24292e)),
-          body: Home(_githubApi),
+          body: HomePage(_githubApi),
         )
     );
   }
