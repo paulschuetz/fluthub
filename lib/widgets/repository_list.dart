@@ -1,19 +1,11 @@
 import 'package:fluthub/network/dto/repository.dart';
 import 'package:fluthub/network/github_api.dart';
-import 'package:fluthub/repository_item.dart';
+import 'package:fluthub/widgets/repository_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RepositoryList extends StatelessWidget {
   final GithubApi _githubApi;
-
-  final _colors = const [
-    Colors.green,
-    Colors.blue,
-    Colors.amber,
-    Colors.blueAccent,
-    Colors.greenAccent
-  ];
 
   const RepositoryList({Key key, GithubApi githubApi})
       : _githubApi = githubApi,
@@ -30,7 +22,6 @@ class RepositoryList extends StatelessWidget {
               itemBuilder: (context, index) {
                 var repo = snapshot.data[index];
                 return RepositoryItem(
-                  color: _colors[index % 5],
                   repository: repo,
                   githubApi: _githubApi,
                 );

@@ -1,4 +1,4 @@
-import 'package:fluthub/home_page.dart';
+import 'package:fluthub/widgets/home_page.dart';
 import 'package:fluthub/network/github_api.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';

@@ -1,20 +1,18 @@
 import 'package:fluthub/network/dto/repository.dart';
 import 'package:fluthub/network/github_api.dart';
+import 'package:fluthub/widgets/repository_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RepositoryItem extends StatelessWidget {
-  final Color _color;
   final Repository _repository;
   final GithubApi _githubApi;
 
   const RepositoryItem(
       {Key key,
-      @required Color color,
       @required Repository repository,
       @required GithubApi githubApi})
       : this._githubApi = githubApi,
-        this._color = color,
         this._repository = repository,
         super(key: key);
 
@@ -29,7 +27,6 @@ class RepositoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print("tapped on ${_repository.name}"),
       child: Container(
         decoration: BoxDecoration(
             border: Border(
@@ -163,6 +160,7 @@ class RepositoryItem extends StatelessWidget {
           ),
         ),
       ),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RepositoryDetailPage(githubApi: _githubApi, repository: _repository))),
     );
   }
 }

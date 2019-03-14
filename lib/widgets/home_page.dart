@@ -1,6 +1,6 @@
 import 'package:fluthub/network/github_api.dart';
-import 'package:fluthub/repository_list.dart';
-import 'package:fluthub/user_box.dart';
+import 'package:fluthub/widgets/repository_list.dart';
+import 'package:fluthub/widgets/user_box.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
