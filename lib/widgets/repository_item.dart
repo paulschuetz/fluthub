@@ -9,9 +9,7 @@ class RepositoryItem extends StatelessWidget {
   final GithubApi _githubApi;
 
   const RepositoryItem(
-      {Key key,
-      @required Repository repository,
-      @required GithubApi githubApi})
+      {Key key, @required Repository repository, @required GithubApi githubApi})
       : this._githubApi = githubApi,
         this._repository = repository,
         super(key: key);
@@ -33,7 +31,6 @@ class RepositoryItem extends StatelessWidget {
                 bottom: BorderSide(
                     color: HSLColor.fromAHSL(1, 207, 0.7, 0.26).toColor(),
                     width: 1.5))),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         height: 120,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -42,7 +39,9 @@ class RepositoryItem extends StatelessWidget {
             children: <Widget>[
               Text(_repository.name,
                   style: TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 18, letterSpacing: 2)),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
+                      letterSpacing: 2)),
               _repository.fork
                   ? FutureBuilder<Repository>(
                       future: _githubApi.loadSourceRepo(_repository),
@@ -160,7 +159,11 @@ class RepositoryItem extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RepositoryDetailPage(githubApi: _githubApi, repository: _repository))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => RepositoryDetailPage(
+                  githubApi: _githubApi, repository: _repository))),
     );
   }
 }

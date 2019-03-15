@@ -21,9 +21,13 @@ class RepositoryList extends StatelessWidget {
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
                 var repo = snapshot.data[index];
-                return RepositoryItem(
-                  repository: repo,
-                  githubApi: _githubApi,
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: RepositoryItem(
+                    repository: repo,
+                    githubApi: _githubApi,
+                  ),
                 );
               });
         } else {

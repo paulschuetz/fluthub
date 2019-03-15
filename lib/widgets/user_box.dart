@@ -1,6 +1,7 @@
 import 'package:fluthub/network/dto/user.dart';
 import 'package:fluthub/network/github_api.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class UserBox extends StatefulWidget {
   final GithubApi _githubApi;
@@ -51,8 +52,8 @@ class _UserBoxState extends State<UserBox> {
                           style: TextStyle(fontSize: 16, letterSpacing: 0.5),
                         ),
                         Text(user.email),
-                        Text("Joined at " +
-                            DateTime.parse(user.createdAt).toLocal().toString())
+                        Text(
+                            "Joined ${timeago.format(DateTime.parse(user.createdAt))}")
                       ],
                     )
                   ],

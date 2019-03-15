@@ -6,6 +6,10 @@ library serializers;
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
+import 'package:fluthub/network/dto/author.dart';
+import 'package:fluthub/network/dto/commit.dart';
+import 'package:fluthub/network/dto/commit_details.dart';
+import 'package:fluthub/network/dto/commit_user.dart';
 import 'package:fluthub/network/dto/license.dart';
 import 'package:fluthub/network/dto/owner.dart';
 import 'package:fluthub/network/dto/permissions.dart';
@@ -26,7 +30,17 @@ part 'serializers.g.dart';
 /// types needed transitively via fields.
 ///
 /// You usually only need to do this once per project.
-@SerializersFor(const [Repository, Permissions, Owner, License, User])
+@SerializersFor(const [
+  Repository,
+  Permissions,
+  Owner,
+  License,
+  User,
+  Commit,
+  CommitDetails,
+  Author,
+  CommitUser
+])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
 

@@ -10,14 +10,19 @@ Future main() async {
   repos.forEach((repo) => print(repo.toString()));
   print("finished fetching all ${repos.length} repos.");
 
-  var source = githubApi
-      .loadSourceRepo(repos.singleWhere((repo) => repo.name == "inFLUX"));
-  print("source: \n" + source.toString());
+  var fluthub = await githubApi
+      .loadSourceRepo(repos.singleWhere((repo) => repo.name == "fluthub"));
+  print("source: \n" + fluthub.toString());
 
   print("fetching user 'paulschuetz'");
   var user = await githubApi.fetchUser();
   print(user.toString());
   print("fetched user");
+
+  print("fetching commits for fluthub");
+  var commits = await githubApi.getCommits(fluthub);
+  commits.forEach((commit) => print(commit.toString()));
+  print("fetched ${commits.length} commits for fluthub.");
 
   exit(0);
 }
