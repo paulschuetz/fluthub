@@ -20,9 +20,14 @@ Future main() async {
   print("fetched user");
 
   print("fetching commits for fluthub");
-  var commits = await githubApi.getCommits(fluthub);
+  var commits = await githubApi.fetchCommits("fluthub");
   commits.forEach((commit) => print(commit.toString()));
   print("fetched ${commits.length} commits for fluthub.");
+
+  print("get all branches for inFLUX repo");
+  var branches = await githubApi.fetchBranches("inFLUX");
+  branches.forEach((branch) => print(branch.toString()));
+  print("fetched ${branches.length} branches");
 
   exit(0);
 }

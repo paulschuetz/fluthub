@@ -7,6 +7,7 @@ library serializers;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:fluthub/network/dto/author.dart';
+import 'package:fluthub/network/dto/branch.dart';
 import 'package:fluthub/network/dto/commit.dart';
 import 'package:fluthub/network/dto/commit_details.dart';
 import 'package:fluthub/network/dto/commit_user.dart';
@@ -39,7 +40,8 @@ part 'serializers.g.dart';
   Commit,
   CommitDetails,
   Author,
-  CommitUser
+  CommitUser,
+  Branch
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
