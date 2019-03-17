@@ -1,5 +1,5 @@
 # fluthub
-GitHub UI written in Flutter.
+GitHub UI written in Flutter for educational purposes only.
 
 ## Installation
 1. Clone repository
