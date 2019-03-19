@@ -36,6 +36,7 @@ class BranchModel extends Model {
   List<Branch> _branches = [];
   Future<void> fetchBranches() async {
     this._state = ModelState.isLoading;
+    notifyListeners();
     var branches = await _githubApi.fetchBranches(this._repositoryName);
     // sort list => master at index 0
     branches.sort(_sortMasterToBegin);
