@@ -1,3 +1,4 @@
+import 'package:fluthub/widgets/app_bar_title.dart';
 import 'package:fluthub/widgets/home_page.dart';
 import 'package:fluthub/network/github_api.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   final GithubApi _githubApi = GithubApi(client: Client());
   // This widget is the root of your application.
+  var _githubColor = Color(0xff24292e);
+  var _appBarTextStyle =
+      TextStyle(color: Colors.white, letterSpacing: 0.5, fontSize: 24);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,14 +27,17 @@ class MyApp extends StatelessWidget {
             // or simply save your changes to "hot reload" in a Flutter IDE).
             // Notice that the counter didn't reset back to zero; the application
             // is not restarted.
-            primarySwatch: Colors.blue,
+            primaryColor: _githubColor,
+            primaryTextTheme: TextTheme(
+                title: _appBarTextStyle, body1: TextStyle(color: _githubColor)),
             pageTransitionsTheme: PageTransitionsTheme(builders: {
               TargetPlatform.android: CupertinoPageTransitionsBuilder(),
             })),
         home: Scaffold(
           appBar: AppBar(
-              title: Center(child: new Text("Fluthub")),
-              backgroundColor: Color(0xff24292e)),
+              title: AppBarTitle(),
+              centerTitle: true,
+              backgroundColor: _githubColor),
           body: HomePage(_githubApi),
         ));
   }

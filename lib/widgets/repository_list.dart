@@ -18,17 +18,22 @@ class RepositoryList extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-              itemCount: snapshot.data.length,
+              itemCount: (snapshot.data.length * 2) - 1,
               itemBuilder: (context, index) {
-                var repo = snapshot.data[index];
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: RepositoryItem(
-                    repository: repo,
-                    githubApi: _githubApi,
-                  ),
-                );
+                if (index % 2 == 0) {
+                  index = (index / 2).round();
+                  var repo = snapshot.data[index];
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    child: RepositoryItem(
+                      repository: repo,
+                      githubApi: _githubApi,
+                    ),
+                  );
+                } else {
+                  return Divider(color: Theme.of(context).primaryColor);
+                }
               });
         } else {
           return Center(

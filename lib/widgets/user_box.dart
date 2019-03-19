@@ -60,8 +60,10 @@ class _UserBoxState extends State<UserBox> {
                 ),
               );
             } else {
-              return Center(
-                child: CircularProgressIndicator(),
+              return Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             }
           },

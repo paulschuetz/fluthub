@@ -2,10 +2,12 @@ import 'package:fluthub/models/branch_model.dart';
 import 'package:fluthub/network/dto/commit.dart';
 import 'package:fluthub/network/dto/repository.dart';
 import 'package:fluthub/network/github_api.dart';
+import 'package:fluthub/widgets/app_bar_title.dart';
 import 'package:fluthub/widgets/branch_swiper.dart';
 import 'package:fluthub/widgets/commit_item.dart';
 import 'package:fluthub/widgets/repository_item.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class RepositoryDetailPage extends StatelessWidget {
@@ -25,7 +27,7 @@ class RepositoryDetailPage extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-          title: new Text("Fluthub"),
+          title: AppBarTitle(),
           centerTitle: true,
           backgroundColor: Color(0xff24292e)),
       body: Material(
@@ -62,15 +64,22 @@ class RepositoryDetailPage extends StatelessWidget {
                                       itemCount: snapshot.data.length,
                                       itemBuilder: (context, index) {
                                         var commit = snapshot.data[index];
-                                        return Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: CommitItem(commit: commit),
-                                        );
+                                        if (index == 0)
+                                          return CommitItem(
+                                              commit: commit, isFirst: true);
+                                        else if (index ==
+                                            snapshot.data.length - 1)
+                                          return CommitItem(
+                                              commit: commit, isLast: true);
+                                        else
+                                          return CommitItem(commit: commit);
                                       }),
                                 );
                               } else {
-                                return Center(
-                                    child: CircularProgressIndicator());
+                                return Expanded(
+                                  child: Center(
+                                      child: CircularProgressIndicator()),
+                                );
                               }
                             },
                           );

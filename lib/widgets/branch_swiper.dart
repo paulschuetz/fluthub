@@ -11,7 +11,7 @@ class BranchSwiper extends StatelessWidget {
 
   final BranchModel _branchModel;
 
-  static const colors = [Colors.blueGrey, Colors.blue, Colors.green];
+  // static const colors = [Colors.blueGrey, Colors.blue, Colors.green];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class BranchSwiper extends StatelessWidget {
           itemBuilder: (context, index) {
             print("index: $index");
             return Container(
-              color: colors[index],
+              color: Theme.of(context).primaryColor,
               child: Center(
                   child: Text(_branchModel.branches[index].name,
                       style: TextStyle(color: Colors.white))),

@@ -26,11 +26,6 @@ class RepositoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(
-                    color: HSLColor.fromAHSL(1, 207, 0.7, 0.26).toColor(),
-                    width: 1.5))),
         height: 120,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -40,7 +35,7 @@ class RepositoryItem extends StatelessWidget {
               Text(_repository.name,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: 18,
+                      fontSize: 22,
                       letterSpacing: 2)),
               _repository.fork
                   ? FutureBuilder<Repository>(

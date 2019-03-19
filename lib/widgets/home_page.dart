@@ -18,7 +18,18 @@ class HomePage extends StatelessWidget {
           UserBox(_githubApi),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Align(alignment: Alignment.centerLeft, child: Container(child: Text("Repositories", textAlign: TextAlign.start, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22, letterSpacing: 0.5, fontStyle: FontStyle.italic),))),
+            child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                    child: Text("Repositories",
+                        textAlign: TextAlign.start,
+                        style:
+                            Theme.of(context).primaryTextTheme.body1.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 22,
+                                  letterSpacing: 0.5,
+                                  fontStyle: FontStyle.italic,
+                                )))),
           ),
           Expanded(child: RepositoryList(githubApi: _githubApi))
         ],
